@@ -2,9 +2,12 @@
 
 import streamlit as st
 import plotly.express as px
+import pandas as pd
 
-def render(df_filtered):
+def render(df_filtered:pd.DataFrame):
     st.header("🇸🇦 Saudi Arabia: Focused Analysis")
+
+    df_filtered.sort_values(by="Year", ascending=True, inplace=True)
 
     saudi_df = df_filtered[df_filtered["Country"] == "Saudi Arabia"]
 
@@ -16,10 +19,10 @@ def render(df_filtered):
     st.dataframe(saudi_df)
 
     st.subheader("📊 Life Expectancy Over Time")
-    if "Year" in saudi_df.columns and "Life expectancy" in saudi_df.columns:
+    if "Year" in saudi_df.columns and "Life_expectancy" in saudi_df.columns:
         fig = px.line(
             saudi_df,
-            x="Year", y="Life expectancy",
+            x="Year", y="Life_expectancy",
             title="Life Expectancy in Saudi Arabia Over Time"
         )
         st.plotly_chart(fig, use_container_width=True)
