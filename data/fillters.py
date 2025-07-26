@@ -28,7 +28,7 @@ def get_filtered_df():
         st.session_state["selected_years"] = (
             int(df["Year"].min()), int(df["Year"].max())
         )
-
+    
     # Prepare options
     # 🔹 Get all unique regions and year range from the dataset
     all_regions = df["Region"].unique()

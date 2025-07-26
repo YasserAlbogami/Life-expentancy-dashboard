@@ -8,11 +8,7 @@ from tabs import (
     region_based_analytics,
 
 )
-from utils import apply_custom_style, add_logo_to_sidebar
 
-# Apply global style and logo amnd 
-apply_custom_style()
-add_logo_to_sidebar()
 
 #  Page title
 st.set_page_config(page_title="🌐 Life Expectancy Dashboard", layout="wide")
@@ -25,24 +21,20 @@ df_filtered = fillters.get_filtered_df()
 # Create tabs
 tab0, tab1, tab2, tab3 = st.tabs([
     "📊 General Insights",
+    "🌍 Numerical Analysis",
     "🗺️ Region-Based Analytics",
-    "🌍 Numerical Analysis & comparison",
     "🤖 Linear Regression Model",
 ])
 
 # Render each tab content
-
-
 with tab0:
     general_insights.render(df_filtered)
 
 with tab1:
-    region_based_analytics.render(df_filtered)
-
-
-with tab2:
     numrecial_analysis.render(df_filtered)
 
+with tab2:
+    region_based_analytics.render(df_filtered)
+
 with tab3:
-    
-    Linear_Model.render(pd.read_csv("data/Life-Expectancy-Data-Updated.csv"))  # Assuming the data is in this CSV file
+    Linear_Model.render(pd.read_csv("data/Life-Expectancy-Data-Updated.csv"))

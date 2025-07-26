@@ -3,8 +3,6 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-import folium
-from streamlit_folium import st_folium
 
 
 def render(df_filtered):

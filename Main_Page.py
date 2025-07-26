@@ -1,5 +1,4 @@
 import streamlit as st
-from utils import apply_custom_style, add_logo_to_sidebar
 from data import fillters
 from main_tabs import (
     dataset_overview,
@@ -7,8 +6,7 @@ from main_tabs import (
 )
 import pandas as pd
 # Apply global style and logo
-apply_custom_style()
-add_logo_to_sidebar()
+
 
 # Set page config
 st.set_page_config(page_title="🧪 Project Overview", layout="wide")
