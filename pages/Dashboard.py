@@ -1,11 +1,11 @@
 import streamlit as st
 from data import fillters
-
+import pandas as pd
 from tabs import (
+    Linear_Model,
     general_insights,
-    overall_insights,
+    numrecial_analysis,
     region_based_analytics,
-    saudi_arabia,
 
 )
 from utils import apply_custom_style, add_logo_to_sidebar
@@ -27,7 +27,7 @@ tab0, tab1, tab2, tab3 = st.tabs([
     "📊 General Insights",
     "🗺️ Region-Based Analytics",
     "🌍 Numerical Analysis & comparison",
-    "🇸🇦 Saudi Arabia",
+    "🤖 Linear Regression Model",
 ])
 
 # Render each tab content
@@ -41,10 +41,8 @@ with tab1:
 
 
 with tab2:
-    overall_insights.render(df_filtered)
+    numrecial_analysis.render(df_filtered)
 
 with tab3:
-        # Force Saudi-only data, ignoring sidebar filters
-    saudi_df = df_filtered.copy()
-    saudi_df = saudi_df[saudi_df["Country"] == "Saudi Arabia"]
-    saudi_arabia.render(saudi_df)
+    
+    Linear_Model.render(pd.read_csv("data/Life-Expectancy-Data-Updated.csv"))  # Assuming the data is in this CSV file

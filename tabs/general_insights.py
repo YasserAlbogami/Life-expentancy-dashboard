@@ -28,19 +28,48 @@ def render(df_filtered):
     # <-🔹 1: 📊 Life Expectancy Distribution by Development Status->
 
 
+    # Map labels
     df_filtered['Developed_label'] = df_filtered['Developed'].map({0: 'Developing', 1: 'Developed'})
-    
-    # Plotly stacked histogram
+
+    # Custom colors (Developed = dark blue, Developing = light blue)
+
+    color_map = {
+    "Developed": "#2171b5",    # dark blue
+    "Developing": "#9ecae1"    # light blue
+}
+
+
+    # Overlap the two distributions using barmode='overlay'
     fig = px.histogram(
         df_filtered,
         x="Life_expectancy",
         color="Developed_label",
         nbins=30,
-        barmode="stack",
-        color_discrete_sequence=px.colors.qualitative.Pastel,
+        barmode="overlay",
+        color_discrete_map=color_map,
         title="📊 Stacked Histogram of Life Expectancy by Developed Status"
     )
-    
+
+    # Calculate means
+    mean_developed = df_filtered[df_filtered['Developed_label'] == 'Developed']['Life_expectancy'].mean()
+    mean_developing = df_filtered[df_filtered['Developed_label'] == 'Developing']['Life_expectancy'].mean()
+
+    fig.add_vline(
+    x=mean_developed,
+    line_dash="dash",
+    line_color='rgb(0,32,96)',
+    annotation_text=f"\t\t\tDeveloped Mean: {mean_developed:.2f}",
+    annotation_position="top left"
+)
+
+    fig.add_vline(
+        x=mean_developing,
+        line_dash="dash",
+        line_color='rgb(135,206,250)',
+        annotation_text=f"Developing Mean: {mean_developing:.2f}",
+        annotation_position="top right"
+    )
+
     # Subheader and chart
     st.subheader("1:  📊 Life Expectancy Distribution by Development Status")
     st.plotly_chart(fig, use_container_width=True)

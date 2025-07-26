@@ -88,7 +88,7 @@ def render(df_filtered: pd.DataFrame):
 
 ## 🧾 Dataset Column Descriptions
 
-Each row represents a **country-year** pair and includes multiple indicators grouped by category:
+Each row represents a **country-year** pair (from **2000 to 2015**) and includes multiple indicators grouped by category:
 
 ---
 
@@ -98,12 +98,12 @@ Each row represents a **country-year** pair and includes multiple indicators gro
 |--------------------------|------------------------------------------------------------------|
 | `Country`                | Name of the country (e.g., Japan, Saudi Arabia).                 |
 | `Region`                 | Geographic region of the country (e.g., Eastern Mediterranean).  |
-| `Year`                   | Year of the observation.                                         |
-| `Population_mln`         | Population size in millions.                                     |
-| `GDP_per_capita`         | Gross Domestic Product per person in USD.                        |
-| `Schooling`              | Average number of years of schooling.                            |
-| `Economy_status_Developed`   | `1` if country is developed, else `0`.                     |
-| `Economy_status_Developing` | `1` if country is developing, else `0`.                   |
+| `Year`                   | Year of the observation (2000–2015).                             |
+| `Population_mln`         | Total population in millions.                                    |
+| `GDP_per_capita`         | GDP per capita in current USD.                                   |
+| `Schooling`              | Average years of formal education for people aged 25+.           |
+| `Developed`              | `1` if country is economically developed, else `0`.              |
+| `Developing`             | `1` if country is economically developing, else `0`.             |
 
 ---
 
@@ -111,33 +111,33 @@ Each row represents a **country-year** pair and includes multiple indicators gro
 
 | **Column**         | **Description**                                                  |
 |--------------------|------------------------------------------------------------------|
-| `Life_expectancy`  | Average number of years a person is expected to live.           |
-| `Infant_deaths`    | Number of deaths of infants under 1 year per 1,000 live births. |
-| `Under_five_deaths`| Number of deaths of children under 5 years per 1,000 births.    |
-| `Adult_mortality`  | Probability of dying between ages 15–60 (per 1,000 adults).     |
+| `Life_expectancy`  | Average life expectancy (both genders) from 2000 to 2015.        |
+| `Infant_deaths`    | Infant deaths per 1,000 population.                              |
+| `0-5yrs_deaths`    | Deaths of children under 5 years per 1,000 population.           |
+| `Adult_mortality`  | Deaths of adults (15–60 years) per 1,000 population.             |
 
 ---
 
 ### 🦠 Disease & Immunization
 
-| **Column**     | **Description**                                                      |
-|----------------|----------------------------------------------------------------------|
-| `Hepatitis_B`  | % of children vaccinated against Hepatitis B.                        |
-| `Measles`      | Number of measles cases reported annually.                           |
-| `Polio`        | % of children vaccinated against Polio.                              |
-| `Diphtheria`   | % of children vaccinated against Diphtheria.                         |
-| `Incidents_HIV`| New HIV infections per 1,000 uninfected population (ages 15–49).     |
+| **Column**     | **Description**                                                                 |
+|----------------|---------------------------------------------------------------------------------|
+| `Hepatitis_B`  | % coverage of Hepatitis B (HepB3) immunization among 1-year-olds.               |
+| `Measles`      | % coverage of Measles (MCV1) immunization among 1-year-olds.                    |
+| `Polio`        | % coverage of Polio (Pol3) immunization among 1-year-olds.                      |
+| `Diphtheria`   | % coverage of Diphtheria (DTP3) immunization among 1-year-olds.                 |
+| `Incidents_HIV`| New HIV infections per 1,000 population (ages 15–49).                           |
 
 ---
 
 ### 🧬 Lifestyle & Nutrition
 
-| **Column**                   | **Description**                                                  |
-|------------------------------|------------------------------------------------------------------|
-| `Alcohol_consumption`        | Liters of pure alcohol consumed per person per year.             |
-| `BMI`                        | Average Body Mass Index across the population.                   |
-| `Thinness_ten_nineteen_years`| % of thin adolescents aged 10–19.                                |
-| `Thinness_five_nine_years`   | % of thin children aged 5–9.                                     |
+| **Column**            | **Description**                                                                  |
+|------------------------|----------------------------------------------------------------------------------|
+| `Alcohol`              | Liters of pure alcohol consumed per capita (age 15+).                           |
+| `BMI`                  | Average Body Mass Index (BMI = weight/height² in kg/m²).                        |
+| `Thinness_10-19`       | % of adolescents aged 10–19 with BMI < -2 SD below the median.                  |
+| `Thinness_5-9`         | % of children aged 5–9 with BMI < -2 SD below the median.                       |
 
 ---
-    """)
+""")
