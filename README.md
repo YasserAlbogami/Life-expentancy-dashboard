@@ -1,153 +1,100 @@
 # Life Expectancy Dashboard
 
-Welcome to the Life Expectancy Dashboard!  
-This project provides an interactive Streamlit dashboard for exploring global life expectancy data, health indicators, and trends across countries and regions.
+Welcome to the Life Expectancy Dashboard repository!
+
+This project provides an interactive dashboard—built with Streamlit—for analyzing and visualizing life expectancy data, health, and socioeconomic indicators across countries and years.
 
 ---
 
-## 🧭 Project Overview
+## 🚀 Quick Start
 
-The dashboard leverages a rich dataset comprising country-year pairs, offering insights into:
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/YasserAlbogami/Life-expentancy-dashboard.git
+    cd Life-expentancy-dashboard
+    ```
 
-- Life expectancy metrics
-- Health outcomes & disease statistics
-- Lifestyle & nutrition indicators
-- Socioeconomic and schooling factors
+2. **Create and activate a virtual environment (optional but recommended)**
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
 
-**Tech Stack:**  
-- Python, Streamlit, Pandas, Plotly  
-- Directory structure:  
-  - `main_app.py` (main entry point)
-  - `pages/` (dashboard page)
-  - `main_tabs/` (project overview tabs: motivation, dataset, preprocessing)
-  - `tabs/` (dashboard analysis tabs)
-  - `data/` (CSV datasets)
+3. **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
----
-
-## 🚀 How to Run (Step-by-Step for Instructors)
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/YasserAlbogami/Life-expentancy-dashboard.git
-cd Life-expentancy-dashboard
-```
-
-### 2. Set Up Python Environment
-
-Recommended: Create a virtual environment
-
-```bash
-python -m venv venv
-source venv/bin/activate   # macOS/Linux
-venv\Scripts\activate      # Windows
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run the Dashboard
-
-Start the main app:
-
-```bash
-streamlit run main_app.py
-```
+4. **Run the Streamlit app**
+    ```bash
+    streamlit run Main_Page.py
+    ```
 
 ---
 
-## 🏗️ Architecture: Tabs & Navigation
-
-### Entry Point: `main_app.py`
-
-- **Purpose:** Landing page and project overview.
-- **Tabs:**
-  1. **Why This Project?**  
-     - Explains the motivation and problem statement.
-  2. **Dataset Overview**  
-     - Shows dataset summary, descriptive stats, and column descriptions.
-  3. **Preprocessing and Cleaning**  
-     - Details data cleaning and preparation steps.
-
-- **Button:**  
-  - 📈 **Open Dashboard** — navigates to the main dashboard (`pages/Dashboard.py`).
-
----
-
-### Dashboard: `pages/Dashboard.py`
-
-- **Sidebar:** Filter by country, region, year.
-- **Tabs:**  
-  1. **General Insights** (`tabs/general_insights.py`)  
-     - Distribution by development status  
-     - Life expectancy growth in Middle East  
-     - Impact of schooling, HIV, and adult mortality  
-  2. **Region-Based Analytics** (`tabs/region_based_analytics.py`)  
-     - BMI trends by region  
-     - Heatmaps of BMI by region/status  
-     - Regional comparisons  
-  3. **Numerical Analysis & Comparison** (`tabs/overall_insights.py`)  
-     - Overall life expectancy stats  
-     - Country count  
-     - Trend direction  
-     - Correlation with health variables  
-     - Saudi Arabia vs. global comparison  
-  4. **Saudi Arabia** (`tabs/saudi_arabia.py`)  
-     - Focused analysis for Saudi Arabia (filters forced)
-
----
-
-### Data & Analysis
-
-- **main_tabs/dataset_overview.py:**  
-  - Dataset stats, summary metrics, progress table by country
-  - Full column descriptions:
-    - Country, Region, Year, Population, GDP, Schooling, Economy status, Life expectancy, Infant deaths, Adult mortality, Immunization rates, Disease stats, Lifestyle indicators
-
-- **tabs/** (`general_insights.py`, `region_based_analytics.py`, `overall_insights.py`, `saudi_arabia.py`):  
-  - Each file holds a `.render(df_filtered)` function for Streamlit tab content
-  - Visualizations: Histograms, line charts, heatmaps, progress columns, sunburst charts
-
----
-
-## 📂 Directory Structure
+## 📁 Project Structure
 
 ```
 Life-expentancy-dashboard/
-├── main_app.py              # Main entry point
-├── pages/
-│   └── Dashboard.py         # Main dashboard UI
-├── main_tabs/
-│   ├── dataset_overview.py  # Dataset stats & overview tab
-│   └── preprocessing.py     # Preprocessing steps tab
-├── tabs/
-│   ├── general_insights.py
-│   ├── region_based_analytics.py
-│   ├── overall_insights.py
-│   └── saudi_arabia.py
-├── data/
-│   └── Life-Expectancy-Data-Updated.csv
+│
+├── .streamlit/                # Streamlit configuration files
+├── data/                      # Datasets (CSV files)
+├── main_tabs/                 # Tabs for project overview, dataset, preprocessing
+├── pages/                     # Dashboard main page(s)
+├── tabs/                      # Analysis and visualization tabs for dashboard
+│
+├── .gitignore
+├── .python-version
+├── layout_set_logo.png        # Logo for dashboard
+├── Main_Page.py               # Streamlit main entry point
+├── pyproject.toml
+├── README.md
 ├── requirements.txt
-└── README.md
+├── uv.lock
 ```
 
+### Key Files
+
+- **Main_Page.py**: The main entry point for running the dashboard app.
+- **README.md**: This file.
+- **requirements.txt**: Python dependencies for the project.
+- **layout_set_logo.png**: Custom logo for dashboard UI.
+- **data/**: Contains the life expectancy dataset(s).
+- **main_tabs/**: Project introduction, dataset summary, and preprocessing steps.
+- **pages/**: Main dashboard interface.
+- **tabs/**: Contains code for individual analysis tabs in the dashboard.
+
 ---
 
-## 🙋 Contributing
+## 🧭 Description
 
-Pull requests and suggestions are welcome!
+- Visualize and analyze life expectancy metrics, health outcomes, and related features by country, region, and year.
+- Navigate through multiple tabs:
+    - **Project Overview**
+    - **Dataset Overview**
+    - **Preprocessing and Cleaning**
+    - **Dashboard** (with sub-tabs for various analyses)
 
-## 📜 License
-
-MIT
+- Filter by country, region, year, and more.
+- Compare trends and correlations between countries and variables.
+- Focused analysis for Saudi Arabia available in a dedicated tab.
 
 ---
 
-**For instructors:**  
-- Start with `main_app.py` for project walkthrough and context.  
-- Use the "Open Dashboard" button to launch the full interactive dashboard.  
-- Explore each tab for specialized health insights and analytics.
+## 🛠️ Requirements
+
+- Python 3.8+
+- All Python dependencies listed in `requirements.txt`
+
+---
+
+## 🤝 Contributions
+
+Contributions, issues, and feature requests are welcome!
+
+---
+
+_Last updated to reflect commit "4TH REQUIREMENTS!" — directory and file names are accurate as of the latest project structure._
